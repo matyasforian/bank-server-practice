@@ -8,7 +8,6 @@ class BankAccount:
         self.balance = 0
         self.account_number = self.account_number_generator()
 
-
     @classmethod
     def account_number_generator(cls):
         base_number = 1000 + cls.account_counter

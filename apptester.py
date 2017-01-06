@@ -1,3 +1,5 @@
+import sys
+
 from main import Main
 from Transaction import Transaction
 from person import Person
@@ -9,12 +11,22 @@ class AppTester:
         # TODO: this is sooo primitive. We should use some UT framework!
         self.all_tests = 0
         self.failed_tests = 0
-        server = Main()
-
-        for i in range(10):
-            p = Person(i, "name_" + str(i), 1964 + i, "pass")
-            server.register_new_customer(p)
         print(self.__class__.__name__ + " created")
+
+    def test_story(self):
+        self.all_tests += 1
+        try:
+            server = Main()
+
+            for i in range(10):
+                p = Person(i, "name_" + str(i), 1964 + i, "pass")
+                server.register_new_customer(p)
+
+            server.open_account(4)
+        except:
+            self.failed_tests += 1
+            print("Unexpected error:", sys.exc_info()[0])
+
 # TODO: decide if these should e class/staticmethods or every test should
 # be instance method
 
@@ -27,12 +39,11 @@ class AppTester:
         except:
             self.failed_tests += 1
             print("Unexpected error:", sys.exc_info()[0])
-            return False
-        return True
 
     def run_tests(self):
         ''' put the desired tests here for smoke testing '''
         self.test_create_transaction_instance()
+        self.test_story()
         print("All tests ran. Failed/All: {} / {}".format(self.failed_tests,
                                                           self.all_tests))
 
