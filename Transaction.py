@@ -14,15 +14,3 @@ class Transaction:
 
     def __repr__(self):
         return self.__str__()
-
-# tests
-# TODO: remove these and put to the main tester file
-
-
-def test_print_transaction():
-    transaction = Transaction("Send Err", "Rec Iever",
-                              "100", "2016-01-01:20:19:45")
-    print(transaction)
-
-if __name__ == "__main__":
-    test_print_transaction()
