@@ -1,6 +1,6 @@
 from main import Main
-from Person import Person
 from Transaction import Transaction
+from person import Person
 
 
 class AppTester:
